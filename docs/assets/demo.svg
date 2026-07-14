@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="518" viewBox="0 0 720 518" font-family="Menlo, Consolas, monospace" font-size="14">
+  <rect width="720" height="518" rx="10" fill="#101418"/>
+  <circle cx="24" cy="22" r="6" fill="#ff5f56"/>
+  <circle cx="44" cy="22" r="6" fill="#ffbd2e"/>
+  <circle cx="64" cy="22" r="6" fill="#27c93f"/>
+  <text x="360" y="27" fill="#8b949e" text-anchor="middle" font-size="12">vendorpin — vendored code with provenance</text>
+  <g fill="#c9d1d9">
+    <text x="24" y="62"><tspan fill="#7ee787">$</tspan> vendorpin status</text>
+    <text x="24" y="88" fill="#d2a8ff">NAME      COMMIT   REF     FILES  STATE</text>
+    <text x="24" y="110">demo-lib  147bdc3  v1.0.0      3  <tspan fill="#f778ba">drifted (1 modified, 1 extra)</tspan></text>
+    <text x="24" y="148"><tspan fill="#7ee787">$</tspan> vendorpin verify</text>
+    <text x="24" y="174">demo-lib: <tspan fill="#f778ba">drifted (1 modified, 1 extra)</tspan></text>
+    <text x="24" y="196">  <tspan fill="#ffbd2e">extra</tspan>     vendor/demo-lib/NOTES.txt</text>
+    <text x="24" y="218">  <tspan fill="#ffbd2e">modified</tspan>  vendor/demo-lib/parse.py</text>
+    <text x="24" y="240">verify: <tspan fill="#ff5f56">FAIL</tspan> (1 of 1 vendor drifted)</text>
+    <text x="24" y="278"><tspan fill="#7ee787">$</tspan> vendorpin diff</text>
+    <text x="24" y="304" fill="#8b949e">--- /dev/null</text>
+    <text x="24" y="326" fill="#8b949e">+++ b/vendor/demo-lib/NOTES.txt (local)</text>
+    <text x="24" y="348" fill="#79c0ff">@@ -0,0 +1 @@</text>
+    <text x="24" y="370"><tspan fill="#7ee787">+local note</tspan></text>
+    <text x="24" y="392" fill="#8b949e">--- a/vendor/demo-lib/parse.py (pinned 147bdc3)</text>
+    <text x="24" y="414" fill="#8b949e">+++ b/vendor/demo-lib/parse.py (local)</text>
+    <text x="24" y="436" fill="#79c0ff">@@ -1,2 +1,2 @@</text>
+    <text x="24" y="458"> def parse(s):</text>
+    <text x="24" y="480"><tspan fill="#ff5f56">-    return s.strip()</tspan></text>
+    <text x="24" y="502"><tspan fill="#7ee787">+    return s</tspan></text>
+  </g>
+</svg>
