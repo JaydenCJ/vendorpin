@@ -15,6 +15,7 @@ import (
 	"os/exec"
 	"path"
 	"strings"
+	"time"
 
 	"github.com/JaydenCJ/vendorpin/internal/snapshot"
 )
@@ -79,13 +80,18 @@ func ResolveCommit(gitDir, ref string) (string, error) {
 }
 
 // CommitTime returns the author date of a commit in strict ISO-8601 form
-// (git's %aI), the deterministic timestamp recorded in the lockfile.
+// (git's %aI), normalized to a numeric offset for lockfile stability.
 func CommitTime(gitDir, commit string) (string, error) {
 	out, err := run(gitDir, "show", "-s", "--format=%aI", commit)
 	if err != nil {
 		return "", err
 	}
-	return strings.TrimSpace(string(out)), nil
+	raw := strings.TrimSpace(string(out))
+	ts, err := time.Parse(time.RFC3339, raw)
+	if err != nil {
+		return "", fmt.Errorf("parse commit time %q: %v", raw, err)
+	}
+	return ts.Format("2006-01-02T15:04:05-07:00"), nil
 }
 
 // Archive reads the tree at commit (restricted to subdir when non-empty)
